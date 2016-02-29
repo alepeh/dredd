@@ -397,6 +397,10 @@ class TransactionRunner
       path: transaction.fullPath
       method: transaction.request['method']
       headers: transaction.request.headers
+      # added next three lines to support slef-signed certificates
+      rejectUnauthorized: false,
+      requestCert: true,
+      agent: false
 
     transaction.startedAt = Date.now() # number in miliseconds (UNIX-like timestamp * 1000 precision)
 
